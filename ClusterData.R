@@ -26,8 +26,10 @@ fviz_cluster(km.res,data=df2,
 
 # Merge DB
 
-df <- data.frame(df,data.frame(km.res$cluster))
+df <- data.frame(df,data.frame(as.factor(km.res$cluster)))
+names(df)[97] <- "km.res.cluster"
 table(data.frame(km.res$cluster))
+saveRDS(df,"Data/dfcluster.Rda")
 
 for (x in 1:4) {
   assign(paste0("i",x), which(df$km.res.cluster==x))
