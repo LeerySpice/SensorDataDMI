@@ -22,8 +22,6 @@
 | Number_clusters | 2.000 | 5.0000  |    0 | 2.0000   |   0 | 2.0000 |  
 | Value_Index  | 0.544 | 0.0331 |   0 |  1.0757 |   0 | 1.0561 |
 
-![Numero cluster optimizado](https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/optimz_nb.cluster.png)
-
 Among all indices: 
 * 2 proposed  0 as the best number of clusters
 * 1 proposed  1 as the best number of clusters
@@ -36,14 +34,8 @@ Among all indices:
 
 Conclusion: **According to the majority rule, the best number of clusters is  4**
 
-## Kmeans 
-![image](https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/kmeans_cluster.png)
 
+| Optimization cluster     | Kmeans  k=4    |
+|------------|-------------|
+| <img src="https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/optimz_nb.cluster.png" width="550"> | <img src="https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/kmeans_cluster.png" width="550"> |
 
-```{r load}
-
-```
-
-## Including Plots
-
-You can also embed plots, for example:
