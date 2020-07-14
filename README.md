@@ -29,3 +29,18 @@ Conclusion: **According to the majority rule, the best number of clusters is  4*
 |------------|-------------|
 | <img src="https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/optimz_nb.cluster.png" width="550"> | <img src="https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/kmeans_cluster.png" width="550"> |
 
+- Merge en base de datos con indices de cluster como factor, via *km.res.cluster*
+- Guarda base como dfcluster.Rda
+
+```{r }
+for (x in 1:4) {
+  assign(paste0("i",x), which(df$km.res.cluster==x))
+  assign(paste0("DC",x), df[get(paste0("i",x)),][,-97])
+  assign(paste0("PDC",x), colMeans(get(paste0("DC",x))))
+  saveRDS(get(paste0("DC",x)),file=paste0('Data/DC', x, '.Rda'))
+{
+```
+- Obtiene el promedio de las clases
+- Se grafican por clúster co ggplot2
+![image](https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/main_cluster.png)
+- Visualización via *plotly* en Viewer de Rstudio
