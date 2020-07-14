@@ -1,7 +1,3 @@
----
-title: "README"
-output: github_document
----
 
 ## ImportBson.R 
 - Lectura de la base measurements.bson usando librería *mongolite*. 
@@ -26,7 +22,23 @@ output: github_document
 | Number_clusters | 2.000 | 5.0000  |    0 | 2.0000   |   0 | 2.0000 |  
 | Value_Index  | 0.544 | 0.0331 |   0 |  1.0757 |   0 | 1.0561 |
 
-![image]
+![Numero cluster optimizado](https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/optimz_nb.cluster.png)
+
+Among all indices: 
+* 2 proposed  0 as the best number of clusters
+* 1 proposed  1 as the best number of clusters
+* 6 proposed  2 as the best number of clusters
+* 2 proposed  3 as the best number of clusters
+* 9 proposed  4 as the best number of clusters
+* 2 proposed  5 as the best number of clusters
+* 3 proposed  6 as the best number of clusters
+* 1 proposed  8 as the best number of clusters
+
+Conclusion: **According to the majority rule, the best number of clusters is  4**
+
+## Kmeans 
+![image](https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/kmeans_cluster.png)
+
 
 ```{r load}
 
