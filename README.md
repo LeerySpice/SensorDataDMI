@@ -76,6 +76,16 @@ Number of resamples: 10
 - se divide en 80% entrenamiento y 20% validación
 - Se entrena usando métodos LDA, CART, KNN, SVM, RF
 
+ 
+|Accuracy |  Min.  |   Mean |    Max. | Kappa |    Min. |   Mean  |  Max. |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+|lda | 0.9348633 | 0.9443564 | 0.9554506 | lda | 0.8967683 |0.9118418 |0.9294735 |
+|cart | 0.9217538 | 0.9239752 | 0.9274384 | cart | 0.8759175 |0.8792006 |0.8853635 |
+|knn | 0.9615255 | 0.9651760 | 0.9699831 |knn |0.9390702 |0.9448675 |0.9525208 | 
+|svm | 0.9807627 | 0.9839379 | 0.9858300 | svm | 0.9695771 |0.9745701 |0.9775614  |
+|rf  | 0.9350649 | 0.9712735 | 1.0000000  |rf | 0.9133663 |0.9616909 |1.0000000  | 
+
+
 ![image](https://github.com/LeerySpice/SensorDataDMI/blob/master/Models/DotplotModels.png)
 
 ### Usando RandomForest
