@@ -1,6 +1,3 @@
-install.packages("caret")
-install.packages("e1071")
-
 library(lattice)
 library(ggplot2)
 library(caret)

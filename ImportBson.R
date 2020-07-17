@@ -1,4 +1,3 @@
-install.packages("mongolite")
 library(mongolite)
 library(jsonlite)
 
