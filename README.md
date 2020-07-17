@@ -41,7 +41,7 @@ for (x in 1:4) {
 {
 ```
 - Obtiene el promedio de las clases
-- Se grafican por clúster co ggplot2
+- Se grafican por clúster con ggplot2
 ![image](https://github.com/LeerySpice/SensorDataDMI/blob/master/Cluster/main_cluster.png)
 - Visualización via *plotly* en Viewer de Rstudio
 
@@ -49,7 +49,6 @@ for (x in 1:4) {
 - Leer base de datos de cluster
 - Asignar misma longitud de vector a las cuatro clases, tomando la longitud minima de la clases (cluster 4)
 ```{r }
-df <- readRDS("Data/dfcluster.Rda")
 for (x in 1:4) {
   assign(paste0("i",x), which(df$km.res.cluster==x))
   assign(paste0("ic",x), df[get(paste0("i",x)),][sample(1:length(df[get(paste0("i",x)),1]),min(table(df$km.res.cluster))),])
@@ -71,11 +70,49 @@ Number of resamples: 10
 |svm | 0.9210526 | 0.9482184 | 0.9605263 | 0.9646770 | 0.9835526 | 1.0000000  |  0 |
 |rf |  0.9342105 | 0.9516700 | 0.9605263 | 0.9633441 | 0.9739405 | 0.9870130 |   0 |
 
-Kappa 
-| |Min.|1st Qu. |   Median |     Mean |  3rd Qu.  |    Max. |NA's |
-| ----------- | ----------- | ----------- | ----------- |----------- | ----------- |----------- | ----------- |
-|lda | 0.8245614 | 0.8991228 | 0.9385965 | 0.9212981 | 0.9478657 | 0.9653543  |  0 |
-|cart | 0.6140351 | 0.7019056 | 0.8684211 | 0.8114706 | 0.9078947 | 0.9145299  |  0 |
-|knn | 0.8596491 | 0.8991228 | 0.9210526 | 0.9163163 | 0.9431996 | 0.9649123   | 0 |
-|svm | 0.8947368 | 0.9309534 | 0.9473684 | 0.9529000 | 0.9780702 | 1.0000000  |  0 |
-|rf |  0.9122807 | 0.9355601 | 0.9473684 | 0.9511250 | 0.9652497 | 0.9826850  |  0 |
+## AllMLData.R
+
+- Leer base de datos completa de cluster (37041 casos) 
+- se divide en 80% entrenamiento y 20% validación
+- Se entrena usando métodos LDA, CART, KNN, SVM, RF
+
+![image](https://github.com/LeerySpice/SensorDataDMI/blob/master/Models/DotplotModels.png)
+
+### Usando RandomForest
+
+```{r }
+predictions <- predict(fit.rf, validation)
+confusionMatrix(predictions, validation$km.res.cluster)
+```
+
+#### Confusion Matrix
+
+|   | 1  | 2    | 3    | 4    |
+|---|----|------|------|------|
+| 1 | 47 |   0  |  31  |   7  |
+| 2 |  0 | 2240 |  33  |   6  |
+| 3 |  0 |  66  | 3333 |   4  |
+| 4 |  0 |  41  |  140 | 1457 |
+
+#### Overall Statistics
+                                            
+               Accuracy : 0.9556          
+                 95% CI : (0.9506, 0.9602)
+    No Information Rate : 0.4777          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.9305  
+                                                
+
+#### Statistics by Class:
+
+|                               | Class: 1 | Class: 2 | Class: 3 | Class: 4 |
+|-------------------------------|----------|----------|----------|----------|
+| Sensitivity                   | 1.000000 | 0.9544   | 0.9421   | 0.9885   |
+| Specificity                   | 0.994836 | 0.9923   | 0.9819   | 0.9693   |
+| Pos Pred Value                | 0.552941 | 0.9829   | 0.9794   | 0.8890   |
+| Neg Pred Value                | 1.000000 | 0.9791   | 0.9488   | 0.9971   |
+| Prevalence                    | 0.006346 | 0.3169   | 0.4777   | 0.1990   |
+| Detection Rate                | 0.006346 | 0.3025   | 0.4500   | 0.1967   |
+| Detection Prevalence 0.011477 | 0.3077   | 0.4595   | 0.2213   | 0.2212   |
+| Balanced Accuracy             | 0.997418 | 0.9734   | 0.9620   | 0.9789   |
